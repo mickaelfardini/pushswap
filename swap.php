@@ -35,12 +35,27 @@ function pushSwap() {
 			}
 			pb();
 		}
+		if (isset($list_b[1]) && $list_b[0] < $list_b[count($list_b) -1]) {
+			rb();
+		}
+		if (isset($list_b[1]) && $list_b[0] < $list_b[1]) {
+			sb();
+		}
 		if ($vverbose) {
 			echo "A : [ " . implode(", ", $list_a) . "] - B : [ " . implode(", ", $list_b) . "]\n";
 		}
 	}
 	foreach ($list_b as $key => $value) {
+		if (isset($list_b[1]) && $list_b[0] < $list_b[count($list_b) -1]) {
+			rb();
+		}
+		if (isset($list_b[1]) && $list_b[0] < $list_b[1]) {
+			sb();
+		}
 		pa();
+		if (isset($list_a[1]) && $list_a[0] > $list_a[1]) {
+			sa();
+		}
 		if ($vverbose) {
 			echo "A : [ " . implode(", ", $list_a) . "] - B : [ " . implode(", ", $list_b) . "]\n";
 		}
@@ -137,7 +152,7 @@ function rrr() {
 $time_end = microtime(true);
 
 echo implode(" ", $calls) . "\n";
-if ($verbose) {
-	echo "Time : " . ($time_end - $time_start) / 60 . "\n";
+if ($verbose || $vverbose) {
+	echo "Time : " . ($time_end - $time_start) . "\n";
 	echo "Total : " . count($calls);
 }
