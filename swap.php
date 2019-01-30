@@ -26,6 +26,9 @@ function pushSwap() {
 	global $list_a, $list_b, $vverbose;
 
 	foreach ($list_a as $key => $value) {
+		if (isset($list_a[1]) && $list_a[0] > $list_a[count($list_a) -1]) {
+			ra();
+		}
 		if (isset($list_a[1]) && $list_a[0] < $list_a[1]) {
 			pb();
 		} else {
